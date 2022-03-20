@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class ChangeTime : MonoBehaviour
 {
@@ -21,8 +22,17 @@ public class ChangeTime : MonoBehaviour
     [SerializeField] Color dayColor;
     //夜のColor
     [SerializeField] Color nightColor = Color.black;
-    //一回のExposureの変化量
+    //一回のlightの変化量
     [SerializeField] private Color dC;
+
+
+    //昼の環境光の強さ
+    [SerializeField] float dayIntensity = 1f;
+    //夜の環境光の強さ
+    [SerializeField] float nightIntensity = 0f;
+    //一回の環境光の変化量
+    [SerializeField] float dI;
+
 
     //何回で真っ暗にするか
     public int step = 10;
@@ -35,13 +45,18 @@ public class ChangeTime : MonoBehaviour
     void Start()
     {
         dayExposure = skyBox.GetFloat("_Exposure");
-        dayColor = lightObj.GetComponent<Light>().color;
         dE = (dayExposure - nightExposure) / step;
+
+        dayColor = lightObj.GetComponent<Light>().color;
         dC = (dayColor - nightColor) / step;
 
+        dI = (dayIntensity - nightIntensity) / step;
 
-        skyBoxCopy = new Material(skyBox);
-        RenderSettings.skybox = skyBoxCopy;
+        skyBoxCopy = new Material(skyBox);//skyboxのコピー
+        RenderSettings.skybox = skyBoxCopy;//skyboxをいれる
+
+        RenderSettings.ambientIntensity = dayIntensity;//環境光の強さ
+        RenderSettings.reflectionIntensity = dayIntensity;//環境光の反射の強さ
     }
 
     // Update is called once per frame
@@ -59,16 +74,24 @@ public class ChangeTime : MonoBehaviour
         if (day)
         {
             dayExposure -= dE;
-            dayColor -= dC;
-            dayExposure = (dayExposure >= nightExposure) ? dayExposure : nightExposure;
+            dayExposure = (dayExposure >= nightExposure) ? dayExposure : nightExposure;//夜より暗くならないように
 
-            skyBoxCopy.SetFloat("_Exposure", dayExposure);
-            lightObj.GetComponent<Light>().color = dayColor;
+            dayColor -= dC;
+
+            dayIntensity -= dI;
+            dayIntensity = (dayIntensity >= nightIntensity) ? dayIntensity : nightIntensity;//夜より暗くならないように
+
+            skyBoxCopy.SetFloat("_Exposure", dayExposure);//skyboxを昼に
+            lightObj.GetComponent<Light>().color = dayColor;//lightを昼に
+            RenderSettings.ambientIntensity = dayIntensity;//環境光を昼に
+            RenderSettings.reflectionIntensity = dayIntensity;//環境光の反射を昼に
         }
         else
         {
             skyBoxCopy.SetFloat("_Exposure", nightExposure);
             lightObj.GetComponent<Light>().color = nightColor;
+            RenderSettings.ambientIntensity= nightIntensity;
+            RenderSettings.reflectionIntensity = nightIntensity;
         }
     }
 }

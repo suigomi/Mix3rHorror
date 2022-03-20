@@ -164,6 +164,9 @@ MonoBehaviour:
   dayColor: {r: 0, g: 0, b: 0, a: 0}
   nightColor: {r: 0, g: 0, b: 0, a: 0}
   dC: {r: 0, g: 0, b: 0, a: 0}
+  dayIntensity: 1
+  nightIntensity: 0
+  dI: 0
   step: 10
   day: 1
 --- !u!114 &152399592
