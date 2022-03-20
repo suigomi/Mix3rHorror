@@ -1,19 +1,47 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ChangeTime : MonoBehaviour
 {
-    public Material daySky;
-    public Material nightSky;
-    public GameObject dayLight;
-    public GameObject nightLight;
-    bool day = false;
+    //変更するskybox(Exposureを変える)
+    public Material skyBox;
+    //Materialは再生するごとに変わって色が変わってしまうのでCopyを使用
+    public Material skyBoxCopy;
+    //昼のExposure
+    [SerializeField] float dayExposure;
+    //夜のExposure
+    [SerializeField] float nightExposure = 0;
+    //一回のExposureの変化量
+    [SerializeField] float dE;
+
+
+    //変更するlight(Colorを変える)
+    public GameObject lightObj;
+    //昼のColor
+    [SerializeField] Color dayColor;
+    //夜のColor
+    [SerializeField] Color nightColor = Color.black;
+    //一回のExposureの変化量
+    [SerializeField] private Color dC;
+
+    //何回で真っ暗にするか
+    public int step = 10;
+
+    //昼か夜か
+    [SerializeField] bool day = true;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        TimeReversal();
+        dayExposure = skyBox.GetFloat("_Exposure");
+        dayColor = lightObj.GetComponent<Light>().color;
+        dE = (dayExposure - nightExposure) / step;
+        dC = (dayColor - nightColor) / step;
+
+
+        skyBoxCopy = new Material(skyBox);
+        RenderSettings.skybox = skyBoxCopy;
     }
 
     // Update is called once per frame
@@ -27,20 +55,20 @@ public class ChangeTime : MonoBehaviour
 
     public void TimeReversal()
     {
-        day = !day;
+        day = !day; // 昼と夜の反転 
         if (day)
         {
-            RenderSettings.skybox = daySky;
-            RenderSettings.sun = dayLight.GetComponent<Light>();
-            dayLight.SetActive(true);
-            nightLight.SetActive(false);
+            dayExposure -= dE;
+            dayColor -= dC;
+            dayExposure = (dayExposure >= nightExposure) ? dayExposure : nightExposure;
+
+            skyBoxCopy.SetFloat("_Exposure", dayExposure);
+            lightObj.GetComponent<Light>().color = dayColor;
         }
         else
         {
-            RenderSettings.skybox = nightSky;
-            RenderSettings.sun = nightLight.GetComponent<Light>();
-            dayLight.SetActive(false);
-            nightLight.SetActive(true);
+            skyBoxCopy.SetFloat("_Exposure", nightExposure);
+            lightObj.GetComponent<Light>().color = nightColor;
         }
     }
 }
