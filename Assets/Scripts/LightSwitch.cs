@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class LightSwitch : MonoBehaviour
 {
-    public InputActionReference toggleReference = null;
+    [SerializeField] private XRBaseInteractable _interactable;
 
-    private void Awake(){
-        toggleReference.action.started += Toggle;
+    private void OnEnable()
+    {
+        _interactable.activated.AddListener(switchOnOff);
     }
 
-    private void OnDestroy(){
-        toggleReference.action.started -= Toggle;
+    private void OnDisable()
+    {
+        _interactable.activated.RemoveListener(switchOnOff);
     }
 
-    private void Toggle(InputAction.CallbackContext context) {
+    private void switchOnOff(BaseInteractionEventArgs args){
         GameObject Light = transform.GetChild(0).gameObject;
+
         bool isActive = !Light.activeSelf;
         Light.SetActive(isActive);
     }
