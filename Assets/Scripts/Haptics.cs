@@ -48,20 +48,21 @@ public class Haptics : MonoBehaviour
    private void pullTrigger(ActivateEventArgs arg)
    {
        // イベント発生元のXRBaseControllerに振動させる。
-       arg.interactor.GetComponent<XRBaseController>().SendHapticImpulse(triggerAmplitude,triggerDuration);
+       print("test");
+    //    arg.interactorObject.GetComponent<XRBaseController>().SendHapticImpulse(triggerAmplitude,triggerDuration);
    }
 
    // Select Action(グリップ押下)発生時に実行する処理
    private void pullGrip(SelectEnterEventArgs arg)
    {
        // イベント発生元のXRBaseControllerに振動させる。
-       arg.interactor.GetComponent<XRBaseController>().SendHapticImpulse(gripAmplitude,gripDuration);
+    //    arg.interactorObject.GetComponent<XRBaseController>().SendHapticImpulse(gripAmplitude,gripDuration);
    }
 
    // 接触の発生時に実行する処理
    private void collided(HoverEnterEventArgs arg)
    {
        // イベント発生元のXRBaseControllerに振動させる。
-       arg.interactor.GetComponent<XRBaseController>().SendHapticImpulse(collidedAmplitude,collidedDuration);
+    //    arg.interactorObject.GetComponent<XRBaseController>().SendHapticImpulse(collidedAmplitude,collidedDuration);
    }
 }
