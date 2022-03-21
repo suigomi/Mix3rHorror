@@ -3,38 +3,19 @@ using UnityEngine.InputSystem;
 
 public class LightSwitch : MonoBehaviour
 {
-    private void Update()
-    {
-        // 現在のキーボード情報
-        var current = Keyboard.current;
+    public InputActionReference toggleReference = null;
 
-        // キーボード接続チェック
-        if (current == null)
-        {
-            // キーボードが接続されていないと
-            // Keyboard.currentがnullになる
-            return;
-        }
+    private void Awake(){
+        toggleReference.action.started += Toggle;
+    }
 
-        // Aキーの入力状態取得
-        var aKey = current.aKey;
+    private void OnDestroy(){
+        toggleReference.action.started -= Toggle;
+    }
 
-        // Aキーが押された瞬間かどうか
-        if (aKey.wasPressedThisFrame)
-        {
-            Debug.Log("Aキーが押された！");
-        }
-
-        // Aキーが離された瞬間かどうか
-        if (aKey.wasReleasedThisFrame)
-        {
-            Debug.Log("Aキーが離された！");
-        }
-
-        // Aキーが押されているかどうか
-        if (aKey.isPressed)
-        {
-            Debug.Log("Aキーが押されている！");
-        }
+    private void Toggle(InputAction.CallbackContext context) {
+        GameObject Light = transform.GetChild(0).gameObject;
+        bool isActive = !Light.activeSelf;
+        Light.SetActive(isActive);
     }
 }
