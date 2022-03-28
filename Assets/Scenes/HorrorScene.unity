@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
+  m_OcclusionCullingData: {fileID: 36300000, guid: d0f3441ce4d3d6f43896e386bcfe9eb7,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -38,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3675129, g: 0.36525032, b: 0.3042828, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.3675127, g: 0.36525, b: 0.30428222, a: 0.2}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -161,9 +162,15 @@ MonoBehaviour:
   nightExposure: 0
   dE: 0
   lightObj: {fileID: 705507993}
-  dayColor: {r: 0, g: 0, b: 0, a: 0}
-  nightColor: {r: 0, g: 0, b: 0, a: 0}
-  dC: {r: 0, g: 0, b: 0, a: 0}
+  dayColorL: {r: 0, g: 0, b: 0, a: 0}
+  nightColorL: {r: 0, g: 0, b: 0, a: 1}
+  dCL: {r: 0, g: 0, b: 0, a: 0}
+  dayFog: 0
+  nightFog: 0
+  dF: 0
+  dayColorF: {r: 0, g: 0, b: 0, a: 0}
+  nightColorF: {r: 0, g: 0, b: 0, a: 1}
+  dCF: {r: 0, g: 0, b: 0, a: 0}
   step: 10
   day: 1
 --- !u!114 &152399592
@@ -2095,6 +2102,10 @@ PrefabInstance:
     - target: {fileID: 1000011412874954, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011412874954, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4000014263799362, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
       propertyPath: m_RootOrder
