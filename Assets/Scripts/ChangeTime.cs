@@ -48,6 +48,45 @@ public class ChangeTime : MonoBehaviour
 
     //昼か夜か
     [SerializeField] bool day = true;
+    /*-------------------------------------------------------
+     浸食度を数値で表す場合
+
+    [SerializeField] float sanValue;
+    [SerializeField] float sanValueMax = 100; //初期値が100
+    [SerializeField] float sanValunMin = 0; //0になるとゲームオーバー
+
+
+
+    void Start() {
+        sanValue = sanValueMax;
+        ...
+
+
+    }
+
+
+    public void TimeChange(float sanValue) //san値で管理するので昼と夜の概念はない
+    {
+        float exposure = dE * (sanValue / 100);
+        Color lightColor = dLC * (sanValue / 100);
+        float fogDensity = dF * (sanValue / 100);
+        Color fogColor = dFC * (sanValue / 100);
+
+      
+        skyBoxCopy.SetFloat("_Exposure", exposure);
+        lightObj.GetComponent<Light>().color = lightColor;
+        RenderSettings.fogDensity = fogDensity;
+        RenderSettings.fogColor = fogColor;
+    }
+
+    public void SubSunValue(int x) //san値からxだけ引く(Substruct)
+    {
+        sanValue -= x;
+    }
+
+
+
+    ---------------------------------------------------------*/
 
 
     // Start is called before the first frame update
@@ -97,7 +136,7 @@ public class ChangeTime : MonoBehaviour
             dayFog -= dF;
             RenderSettings.fogDensity = dayFog;//fogのdensityを昼に
 
-            dayColorF -= dCL;
+            dayColorF -= dCF;
             RenderSettings.fogColor = dayColorF;
             
         }
