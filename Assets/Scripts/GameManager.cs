@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour
 
     public void SubSunValue(int x) //san値からxだけ引く(Substruct)
     {
-        sanValue -= x;
-        sanValue = Mathf.Max(sanValue, sanValueMin);
+        sanValue = Mathf.Clamp(sanValue - x, sanValueMin, sanValueMax);//Min <= sanValue <= MaxになるようにClamp関数で制限
     }
 
 }
