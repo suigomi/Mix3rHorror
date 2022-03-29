@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditorInternal;
+using UnityEditor;
 
 public class Appearance : MonoBehaviour
 {
@@ -9,8 +11,10 @@ public class Appearance : MonoBehaviour
 
     [Serializable] struct Pair
     {
-        public int appearanceValue;//表示する侵食度
-        public GameObject gameObject;//表示するオブジェクト
+        [Tooltip("表示する侵食度")]
+        public int appearanceValue;
+        [Tooltip("表示するオブジェクトたち")]
+        public GameObject[] gameObject;
     }
 
 
@@ -32,14 +36,15 @@ public class Appearance : MonoBehaviour
     {
         foreach(Pair p in objects)
         {
+            foreach(GameObject gameObj in p.gameObject)
             // ※インベントリに入っていない状態の時は除くを付け足す
             if (p.appearanceValue >= gameManager.sanValue || !gameManager.day)
             {
-                p.gameObject.SetActive(true);
+                gameObj.SetActive(true);
             }
             else
             {
-                p.gameObject.SetActive(false);
+                gameObj.SetActive(false);
             }
         }
     }

@@ -5,46 +5,64 @@ using UnityEngine.Rendering;
 public class ChangeTime : MonoBehaviour
 {
     private GameManager gameManager;
-    //変更するskybox(Exposureを変える)
+    
+    [Tooltip("変更するskybox(Exposureを変える)")]
     public Material skyBox;
-    //Materialは再生するごとに変わって色が変わってしまうのでCopyを使用
+
+    [Tooltip("Materialは再生するごとに変わって色が変わってしまうのでCopyを使用")]
     public Material skyBoxCopy;
-    //昼のExposure
+
+    [Tooltip("昼のExposure")]
     [SerializeField] float dayExposure;
-    //夜のExposure
+
+    [Tooltip("夜のExposure")]
     [SerializeField] float nightExposure = 0f;
-    //sanValueが1変化したときのExposureの変化量
+
+    [Tooltip("sanValueが1変化したときのExposureの変化量")]
     [SerializeField] float dE;
 
 
-    //変更するlight(Colorを変える)
+    [Tooltip("変更するlight(Colorを変える)")]
     public GameObject lightObj;
-    //昼のColor
+
+    [Tooltip("昼のColor")]
     [SerializeField] Color dayColorL;
-    //夜のColor
+
+    [Tooltip("夜のColor")]
     [SerializeField] Color nightColorL = Color.black;
-    //sanValueが1変化したときのlightの変化量
+
+    [Tooltip("sanValueが1変化したときのlightの変化量")]
     [SerializeField] private Color dCL;
 
-    //昼のLighting Intensity
+    [Tooltip("昼のLighting Intensity")]
     [SerializeField] float dayIntensity;
-    //夜のLighting Intensity
+
+    [Tooltip("夜のLighting Intensity")]
     [SerializeField] float nightIntensity = 0f;
-    //sanValueが1変化したときのLighting Intensityの変化量
+
+    [Tooltip("sanValueが1変化したときのLighting Intensityの変化量")]
     [SerializeField] float dI;
 
-    //昼のfogのdensity
+
+
+    [Tooltip("昼のfogのdensity")]
     [SerializeField] float dayFog;
-    //夜のfogのdensity
+
+    [Tooltip("夜のfogのdensity")]
     [SerializeField] float nightFog = 0f;
-    //sanValueが1変化したときのdensityの変化量
+
+    [Tooltip("sanValueが1変化したときのdensityの変化量")]
     [SerializeField] float dF;
 
-    //昼のfogのcolor
+
+
+    [Tooltip("昼のfogのcolor")]
     [SerializeField] Color dayColorF;
-    //夜のfogのcolor
+
+    [Tooltip("夜のfogのcolor")]
     [SerializeField] Color nightColorF = Color.black;
-    //sanValueが1変化したときのcolorの変化量
+
+    [Tooltip("sanValueが1変化したときのcolorの変化量")]
     [SerializeField] Color dCF;
 
     // Start is called before the first frame update

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //昼か夜か
+    [Tooltip("Day or Night")]
     public bool day = true;
 
-    //侵食度
+
+    [Tooltip("侵食度")]
     public int sanValue;
-    public int sanValueMax = 100; //初期値が100
-    public int sanValueMin = 0; //0になるとゲームオーバー
+    [Tooltip("侵食度の最大値(ゲームスタート時の値)")]
+    public int sanValueMax = 100;
+    [Tooltip("侵食度の最小値(ゲームオーバーになる値)")]
+    public int sanValueMin = 0;
 
     // Start is called before the first frame update
     void Start()
