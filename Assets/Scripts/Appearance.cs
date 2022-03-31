@@ -5,21 +5,22 @@ using System;
 using UnityEditorInternal;
 using UnityEditor;
 
+[Serializable]
+public struct AppearanceTuple
+{
+    [Tooltip("表示する侵食度"), Range(0, 100)]
+    public int appearanceValue;
+    [Tooltip("表示するオブジェクトたち")]
+    [SerializeField] public List<GameObject> objects;
+}
+
 public class Appearance : MonoBehaviour
 {
     private GameManager gameManager;
 
-    [Serializable] struct Pair
-    {
-        [Tooltip("表示する侵食度")]
-        public int appearanceValue;
-        [Tooltip("表示するオブジェクトたち")]
-        public GameObject[] gameObject;
-    }
 
 
-
-    [SerializeField] List<Pair> objects;
+    [SerializeField] List<AppearanceTuple> appearanceTuple;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +35,11 @@ public class Appearance : MonoBehaviour
 
     public void ChangeAppearance()
     {
-        foreach(Pair p in objects)
+        foreach(AppearanceTuple at in appearanceTuple)
         {
-            foreach(GameObject gameObj in p.gameObject)
+            foreach(GameObject gameObj in at.objects)
             // ※インベントリに入っていない状態の時は除くを付け足す
-            if (p.appearanceValue >= gameManager.sanValue || !gameManager.day)
+            if (at.appearanceValue >= gameManager.sanValue || !gameManager.day)
             {
                 gameObj.SetActive(true);
             }

@@ -707,9 +707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac64bca8d9e2b54289efb19275d4deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objects:
+  appearanceTuple:
   - appearanceValue: 80
-    gameObject:
+    objects:
     - {fileID: 556104230}
 --- !u!1 &552138357
 GameObject:
