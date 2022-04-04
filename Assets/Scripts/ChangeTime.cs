@@ -4,6 +4,7 @@ using UnityEngine.Rendering;
 
 public class ChangeTime : MonoBehaviour
 {
+    private GameManager gameManager;
     //変更するskybox(Exposureを変える)
     public Material skyBox;
     //Materialは再生するごとに変わって色が変わってしまうのでCopyを使用
@@ -39,74 +40,25 @@ public class ChangeTime : MonoBehaviour
     //一回のcolorの変化量
     [SerializeField] Color dCF;
 
-
-
-    //何回で真っ暗にするか
-    public int step = 10;
-    //何回夜になったか
-    private int numNight = 0;
-
-    //昼か夜か
-    [SerializeField] bool day = true;
-    /*-------------------------------------------------------
-     浸食度を数値で表す場合
-
-    [SerializeField] float sanValue;
-    [SerializeField] float sanValueMax = 100; //初期値が100
-    [SerializeField] float sanValunMin = 0; //0になるとゲームオーバー
-
-
-
-    void Start() {
-        sanValue = sanValueMax;
-        ...
-
-
-    }
-
-
-    public void TimeChange(float sanValue) //san値で管理するので昼と夜の概念はない
-    {
-        float exposure = dE * (sanValue / 100);
-        Color lightColor = dLC * (sanValue / 100);
-        float fogDensity = dF * (sanValue / 100);
-        Color fogColor = dFC * (sanValue / 100);
-
-      
-        skyBoxCopy.SetFloat("_Exposure", exposure);
-        lightObj.GetComponent<Light>().color = lightColor;
-        RenderSettings.fogDensity = fogDensity;
-        RenderSettings.fogColor = fogColor;
-    }
-
-    public void SubSunValue(int x) //san値からxだけ引く(Substruct)
-    {
-        sanValue -= x;
-    }
-
-
-
-    ---------------------------------------------------------*/
-
-
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
         dayExposure = skyBox.GetFloat("_Exposure");
-        dE = (dayExposure - nightExposure) / step;
+        dE = (dayExposure - nightExposure) / gameManager.sanValueMax;
 
         dayColorL = lightObj.GetComponent<Light>().color;
-        dCL = (dayColorL - nightColorL) / step;
+        dCL = (dayColorL - nightColorL) / gameManager.sanValueMax;
 
         dayFog = RenderSettings.fogDensity;
-        dF = (dayFog - nightFog) / step;
+        dF = (dayFog - nightFog) / gameManager.sanValueMax;
 
         dayColorF = RenderSettings.fogColor;
-        dCF = (dayColorF - nightColorF) / step;
+        dCF = (dayColorF - nightColorF) / gameManager.sanValueMax;
 
         skyBoxCopy = new Material(skyBox);//skyboxのコピー
         RenderSettings.skybox = skyBoxCopy;//skyboxをいれる
-
     }
 
     // Update is called once per frame
@@ -120,25 +72,23 @@ public class ChangeTime : MonoBehaviour
 
     public void TimeReversal()
     {
-        if (numNight <= step)
+        if (gameManager.sanValue > gameManager.sanValueMin)
         {
-            day = !day; // 昼と夜の反転 
+            gameManager.day = !gameManager.day; //昼と夜の切り替え
         }
 
-        if (day)
+        if (gameManager.day)
         {
-            dayExposure -= dE;
-            skyBoxCopy.SetFloat("_Exposure", dayExposure);//skyboxを昼に
+            float exposure = dE * gameManager.sanValue + nightExposure;
+            Color lightColor = dCL* gameManager.sanValue  + nightColorL;
+            float fogDensity = dF * gameManager.sanValue + nightFog;
+            Color fogColor = dCF * gameManager.sanValue + nightColorF;
 
-            dayColorL -= dCL;
-            lightObj.GetComponent<Light>().color = dayColorL;//lightを昼に
 
-            dayFog -= dF;
-            RenderSettings.fogDensity = dayFog;//fogのdensityを昼に
-
-            dayColorF -= dCF;
-            RenderSettings.fogColor = dayColorF;
-            
+            skyBoxCopy.SetFloat("_Exposure", exposure);
+            lightObj.GetComponent<Light>().color = lightColor;
+            RenderSettings.fogDensity = fogDensity;
+            RenderSettings.fogColor = fogColor;
         }
         else
         {
@@ -147,7 +97,8 @@ public class ChangeTime : MonoBehaviour
             RenderSettings.fogDensity = nightFog;//fogを切った方が軽いかも
             RenderSettings.fogColor = nightColorF;
 
-            numNight++;
+            gameManager.SubSunValue(10);
         }
     }
+
 }
