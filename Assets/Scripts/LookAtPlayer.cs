@@ -6,6 +6,8 @@ public class LookAtPlayer : MonoBehaviour
 {
 
     public GameObject player;
+
+    [Tooltip("回転させるSpeed")]
     [SerializeField] private float speed = 0.1f;
 
 
