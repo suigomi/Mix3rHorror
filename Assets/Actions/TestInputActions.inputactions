@@ -527,7 +527,7 @@
                     "path": "<XRController>{LeftHand}/pointerRotation",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "XR",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -538,7 +538,7 @@
                     "path": "<XRController>{LeftHand}/deviceRotation",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "XR",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": true

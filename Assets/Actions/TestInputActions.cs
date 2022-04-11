@@ -549,7 +549,7 @@ public partial class @TestInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<XRController>{LeftHand}/pointerRotation"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""XR"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -560,7 +560,7 @@ public partial class @TestInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<XRController>{LeftHand}/deviceRotation"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""XR"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true

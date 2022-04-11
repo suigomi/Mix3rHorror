@@ -14,8 +14,7 @@ public class AxleInfo
 public class MotorController : MonoBehaviour
 {
     public GameObject xrOrigin;
-    public GameObject mainCamera;
-    
+
     public GameObject cameraPos;
     public GameObject getOffPos;
     public GameObject[] hands;
@@ -58,8 +57,8 @@ public class MotorController : MonoBehaviour
         }
         if (riding)
         {
-            mainCamera.transform.position = cameraPos.transform.position;
-            mainCamera.transform.parent = cameraPos.transform;
+            xrOrigin.transform.position = cameraPos.transform.position;
+            xrOrigin.transform.parent = cameraPos.transform;
         }
     }
 
@@ -93,11 +92,12 @@ public class MotorController : MonoBehaviour
             {
                 motorRb.velocity = motorRb.velocity.normalized * limitSpeed;
             }
-        } else
+        }
+        else
         {
             motorRb.velocity = Vector3.zero;
         }
-        
+
     }
 
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
@@ -119,27 +119,27 @@ public class MotorController : MonoBehaviour
         riding = !riding;
         if (riding)
         {
-            mainCamera.transform.position = cameraPos.transform.position;
-            mainCamera.transform.rotation = cameraPos.transform.rotation;
-            mainCamera.transform.parent = cameraPos.transform;
-            foreach(GameObject hand in hands)
+            xrOrigin.GetComponent<CharacterController>().enabled = false;
+            xrOrigin.transform.position = cameraPos.transform.position;
+            xrOrigin.transform.rotation = cameraPos.transform.rotation;
+            xrOrigin.transform.parent = cameraPos.transform;
+            foreach (GameObject hand in hands)
             {
                 hand.SetActive(false);
             }
         }
         if (!riding)
         {
+            xrOrigin.transform.parent = null;
             xrOrigin.transform.position = getOffPos.transform.position;
             xrOrigin.transform.rotation = getOffPos.transform.rotation;
-            mainCamera.transform.parent = xrOrigin.transform;
-            mainCamera.transform.position = xrOrigin.transform.position;
-            mainCamera.transform.rotation = xrOrigin.transform.rotation;
+            xrOrigin.GetComponent<CharacterController>().height = 1.1176f;
+            xrOrigin.GetComponent<CharacterController>().enabled = true;
             foreach (GameObject hand in hands)
             {
-                hand.SetActive(false);
+                hand.SetActive(true);
             }
         }
     }
 }
-
 
