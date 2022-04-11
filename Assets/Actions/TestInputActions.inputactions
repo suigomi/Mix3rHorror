@@ -61,12 +61,12 @@
                 },
                 {
                     "name": "GetOff",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "9e2d026f-95c4-4ab7-a17d-d832db52ab48",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -445,26 +445,70 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "3943b963-78f4-4bf2-8aff-4ff0f17afa87",
+                    "name": "1D Axis",
+                    "id": "dfedc151-d5a4-48d4-87b3-7782240def40",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetOff",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "cb457ae3-1cef-4c01-a772-e85e7e0384ba",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetOff",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d52da80a-bd66-491f-acf2-baa09939d83e",
                     "path": "<XRController>{LeftHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
                     "action": "GetOff",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "43df7e67-4767-4a96-95e8-0df22a4ba06d",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetOff",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "65b5b320-e09f-4021-9e51-131d29dc8b2e",
+                    "name": "negative",
+                    "id": "20497438-3f88-4550-aec1-636cd9b30446",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetOff",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "330cbeb6-b5dd-4db7-a912-3797dd7c6351",
                     "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "GetOff",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "Quaternion Fallback",

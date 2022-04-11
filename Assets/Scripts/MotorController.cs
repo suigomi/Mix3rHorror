@@ -47,14 +47,14 @@ public class MotorController : MonoBehaviour
 
     public void Update()
     {
-        if (Keyboard.current.rKey.wasPressedThisFrame && motorRb.velocity.magnitude < 2f)
+        if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            SwitchRideing();
+            SwitchRiding();
         }
 
-        if (testInputActions.Player.GetOff.ReadValue<bool>() && riding && motorRb.velocity.magnitude < 2f)
+        if (testInputActions.Player.GetOff.ReadValue<float>() > 0.5 && riding)
         {
-            SwitchRideing();
+            SwitchRiding();
         }
         if (riding)
         {
@@ -93,6 +93,9 @@ public class MotorController : MonoBehaviour
             {
                 motorRb.velocity = motorRb.velocity.normalized * limitSpeed;
             }
+        } else
+        {
+            motorRb.velocity = Vector3.zero;
         }
         
     }
@@ -111,7 +114,7 @@ public class MotorController : MonoBehaviour
         visualWheel.transform.rotation = rotation;
     }
 
-    public void SwitchRideing()
+    public void SwitchRiding()
     {
         riding = !riding;
         if (riding)
@@ -129,6 +132,8 @@ public class MotorController : MonoBehaviour
             xrOrigin.transform.position = getOffPos.transform.position;
             xrOrigin.transform.rotation = getOffPos.transform.rotation;
             mainCamera.transform.parent = xrOrigin.transform;
+            mainCamera.transform.position = xrOrigin.transform.position;
+            mainCamera.transform.rotation = xrOrigin.transform.rotation;
             foreach (GameObject hand in hands)
             {
                 hand.SetActive(false);
