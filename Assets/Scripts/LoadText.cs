@@ -11,7 +11,7 @@ public class LoadText : MonoBehaviour {
 	private Text dataText;
 	//　読む込むテキストが書き込まれている.txtファイル
 	[SerializeField]
-	private TextAsset textAsset;
+	private TextAsset[] textAsset;
 	//　テキストファイルから読み込んだデータ
 	private string loadText1;
 	//　Resourcesフォルダから直接テキストを読み込む
@@ -25,11 +25,28 @@ public class LoadText : MonoBehaviour {
     
     public InputActionReference toggleReference = null;
  
-	void Start () {
-		loadText1 = textAsset.text;
+    void drawText(int sceneNumber)
+    {
+        switch(sceneNumber)
+        {
+            case 1:
+		        loadText1 = textAsset[0].text;
+                break;
+            case 2:
+		        loadText1 = textAsset[1].text;
+                break;
+            case 3:
+		        loadText1 = textAsset[2].text;
+                break;
+            default:
+                break;
+        }
 		splitText1 = loadText1.Split(char.Parse("\n"));
 		textNum1 = 0;
 		dataText.text = "test";
+    }
+
+	void Start () {
 	}
 
     private void Awake()

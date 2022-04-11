@@ -16,7 +16,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.9794985, g: 1, b: 0.5235849, a: 1}
+  m_FogColor: {r: 1, g: 0.8221274, b: 0.5254902, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 497052788}
   - component: {fileID: 497052790}
   - component: {fileID: 497052789}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: GameOverImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1581,7 +1581,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
-  - {fileID: 916838688}
   - {fileID: 696729316}
   - {fileID: 1771395489}
   m_Father: {fileID: 552138359}
@@ -1620,7 +1619,7 @@ Transform:
   m_Children:
   - {fileID: 553392555}
   m_Father: {fileID: 633601892}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &696729317
 MonoBehaviour:
@@ -3068,7 +3067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916838688}
   - component: {fileID: 916838689}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: UI Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3087,8 +3086,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1870182867}
-  m_Father: {fileID: 633601892}
-  m_RootOrder: 1
+  m_Father: {fileID: 963194228}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &916838689
 Camera:
@@ -3218,7 +3217,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 916838688}
   m_Father: {fileID: 633601892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3777,7 +3777,7 @@ GameObject:
   - component: {fileID: 1185737939}
   - component: {fileID: 1185737941}
   - component: {fileID: 1185737940}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5734,7 +5734,7 @@ Transform:
   m_Children:
   - {fileID: 1556418163}
   m_Father: {fileID: 633601892}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1771395490
 MonoBehaviour:
@@ -6265,7 +6265,7 @@ GameObject:
   - component: {fileID: 1870182869}
   - component: {fileID: 1870182868}
   - component: {fileID: 1870182871}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6900,6 +6900,11 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 781933050}
+    - target: {fileID: 287604462732893609, guid: e333e70cdc596624bb9e818d2efa2a16,
+        type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 321866366690769485, guid: e333e70cdc596624bb9e818d2efa2a16,
         type: 3}
       propertyPath: m_RootOrder
