@@ -97,7 +97,6 @@ public class MotorController : MonoBehaviour
         {
             motorRb.velocity = Vector3.zero;
         }
-
     }
 
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
@@ -131,9 +130,9 @@ public class MotorController : MonoBehaviour
         if (!riding)
         {
             xrOrigin.transform.parent = null;
+            xrOrigin.GetComponent<CharacterController>().height = 1.1176f;
             xrOrigin.transform.position = getOffPos.transform.position;
             xrOrigin.transform.rotation = getOffPos.transform.rotation;
-            xrOrigin.GetComponent<CharacterController>().height = 1.1176f;
             xrOrigin.GetComponent<CharacterController>().enabled = true;
             foreach (GameObject hand in hands)
             {
