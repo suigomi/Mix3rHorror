@@ -7,6 +7,12 @@ public class LightSwitch : MonoBehaviour
  
     [SerializeField] AudioClip[] audioClips;
     AudioSource audioSource;
+    GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
 
     private void OnEnable()
     {
@@ -25,5 +31,7 @@ public class LightSwitch : MonoBehaviour
         bool isActive = !Light.activeSelf;
         Light.SetActive(isActive);
         audioSource.PlayOneShot(audioClips[Light.activeSelf ? 0 : 1]);
+
+        gameManager.GameOver();
     }
 }

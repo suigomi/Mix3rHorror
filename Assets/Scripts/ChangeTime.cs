@@ -6,64 +6,65 @@ public class ChangeTime : MonoBehaviour
 {
     private GameManager gameManager;
     
+    
     [Tooltip("変更するskybox(Exposureを変える)")]
     public Material skyBox;
 
     [Tooltip("Materialは再生するごとに変わって色が変わってしまうのでCopyを使用")]
-    public Material skyBoxCopy;
+    Material skyBoxCopy;
 
     [Tooltip("昼のExposure")]
-    [SerializeField] float dayExposure;
+    float dayExposure;
 
     [Tooltip("夜のExposure")]
-    [SerializeField] float nightExposure = 0f;
+    float nightExposure = 0f;
 
     [Tooltip("sanValueが1変化したときのExposureの変化量")]
-    [SerializeField] float dE;
+    float dE;
 
 
     [Tooltip("変更するlight(Colorを変える)")]
     public GameObject lightObj;
 
     [Tooltip("昼のColor")]
-    [SerializeField] Color dayColorL;
+    Color dayColorL;
 
     [Tooltip("夜のColor")]
-    [SerializeField] Color nightColorL = Color.black;
+    Color nightColorL = Color.black;
 
     [Tooltip("sanValueが1変化したときのlightの変化量")]
-    [SerializeField] private Color dCL;
+    private Color dCL;
 
     [Tooltip("昼のLighting Intensity")]
-    [SerializeField] float dayIntensity;
+    float dayIntensity;
 
     [Tooltip("夜のLighting Intensity")]
-    [SerializeField] float nightIntensity = 0f;
+    float nightIntensity = 0f;
 
     [Tooltip("sanValueが1変化したときのLighting Intensityの変化量")]
-    [SerializeField] float dI;
+    float dI;
 
 
 
     [Tooltip("昼のfogのdensity")]
-    [SerializeField] float dayFog;
+    float dayFog;
 
     [Tooltip("夜のfogのdensity")]
-    [SerializeField] float nightFog = 0f;
+    float nightFog = 0f;
 
     [Tooltip("sanValueが1変化したときのdensityの変化量")]
-    [SerializeField] float dF;
+    float dF;
 
 
 
     [Tooltip("昼のfogのcolor")]
-    [SerializeField] Color dayColorF;
+    Color dayColorF;
 
     [Tooltip("夜のfogのcolor")]
-    [SerializeField] Color nightColorF = Color.black;
+    Color nightColorF = Color.black;
 
     [Tooltip("sanValueが1変化したときのcolorの変化量")]
-    [SerializeField] Color dCF;
+    Color dCF;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +96,16 @@ public class ChangeTime : MonoBehaviour
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             TimeReversal();
+        }
+        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("MainCamera"))
+        {
+            TimeReversal();
+            
         }
     }
 
