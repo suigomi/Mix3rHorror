@@ -546,7 +546,7 @@ public partial class @TestInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""first"",
                     ""id"": ""f20e8cbf-52e0-4536-a377-9d630d224f00"",
-                    ""path"": ""<XRController>{LeftHand}/pointerRotation"",
+                    ""path"": ""<XRController>{LeftHand}/devicePosition"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
