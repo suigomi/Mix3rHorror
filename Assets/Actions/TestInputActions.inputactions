@@ -36,7 +36,7 @@
                     "name": "Look",
                     "type": "Value",
                     "id": "90170b1c-41cb-4cac-ab9c-676911092190",
-                    "expectedControlType": "Quaternion",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -511,9 +511,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Quaternion Fallback",
-                    "id": "610aa45b-e0fd-4e97-98a6-6676c2a7a863",
-                    "path": "QuaternionFallback",
+                    "name": "2D Vector",
+                    "id": "caf585be-fb7f-4315-9bb5-a1f974ded251",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -522,34 +522,45 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "first",
-                    "id": "f20e8cbf-52e0-4536-a377-9d630d224f00",
-                    "path": "<XRController>{LeftHand}/pointerRotation",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "second",
-                    "id": "321a0d28-b456-49ac-a967-ab8606b59faa",
-                    "path": "<XRController>{LeftHand}/deviceRotation",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "third",
-                    "id": "52212cda-d1e8-4bed-841b-986aefc6e73a",
+                    "name": "up",
+                    "id": "65620643-8db6-4cf5-a8e9-ee92825f89ed",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "99ba4f55-78cf-4e15-8e52-69cfe05978ab",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "acb7eb50-e112-4551-83dc-ac068f908c5f",
+                    "path": "<XRController>{LeftHand}/Primary2DAxis/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b35b0c80-a48d-4518-8294-89909aee2495",
+                    "path": "<XRController>{LeftHand}/Primary2DAxis/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "XR",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": true

@@ -69,8 +69,8 @@ public class MotorController : MonoBehaviour
         {
             float motor = maxMotorTorque * testInputActions.Player.Accelerate.ReadValue<float>();
             //float steering = maxSteeringAngle * testInputActions.Player.Rotate.ReadValue<float>();
-            Quaternion steeringQua = testInputActions.Player.Look.ReadValue<Quaternion>();
-            float steering = Mathf.Clamp(-steeringQua.eulerAngles.y, -maxSteeringAngle, maxSteeringAngle);
+            Vector2 steering_vec = testInputActions.Player.Look.ReadValue<Vector2>();
+            float steering = steering_vec.x * maxSteeringAngle;
             float brake = brakePower * testInputActions.Player.Brake.ReadValue<float>();
 
             foreach (AxleInfo axleInfo in axleInfos)
