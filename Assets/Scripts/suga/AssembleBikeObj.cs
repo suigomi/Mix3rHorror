@@ -1,0 +1,54 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+
+public class AssembleBikeObj : MonoBehaviour
+{
+
+    XRSocketInteractor socket;
+
+    [SerializeField]
+    BikeParts.Part targetPart;
+
+    bool isSetted = false;
+
+    public BikeParts BikePart { get; private set; }
+
+
+    public bool IsSetted{
+        get{ return isSetted; }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        socket = GetComponent<XRSocketInteractor>();
+        InvokeRepeating("onHoBar", 0.2f, 0.2f);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void onHoBar()
+    {
+        IXRSelectInteractable objName = socket.GetOldestInteractableSelected();
+        BikeParts bikePart = objName.transform.GetComponent<BikeParts>();
+
+
+        if (targetPart==bikePart.GetPartTag)
+        {
+            this.BikePart = bikePart;
+
+            Destroy(objName.transform.GetComponent<XRGrabInteractable>());
+            Destroy(objName.transform.GetComponent<Rigidbody>());
+            Destroy(this.GetComponent<XRSocketInteractor>());
+            objName.transform.parent = this.transform.parent;
+
+            isSetted = true;
+        }
+    }
+}
