@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 public class ChangeTime : MonoBehaviour
 {
     private GameManager gameManager;
+    [Tooltip("どのくらい侵食度を上げるか")]
+    public int substructValue;
     
     
     [Tooltip("変更するskybox(Exposureを変える)")]
@@ -95,21 +97,20 @@ public class ChangeTime : MonoBehaviour
     {
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
-            TimeReversal();
+            TimeReversal(substructValue);
         }
         
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("MainCamera"))
+        if (other.gameObject.name == "XR Origin")
         {
-            TimeReversal();
-            
+            TimeReversal(substructValue);
         }
     }
 
-    public void TimeReversal()
+    public void TimeReversal(int subValue)
     {
         if (gameManager.sanValue > gameManager.sanValueMin)
         {
@@ -139,7 +140,7 @@ public class ChangeTime : MonoBehaviour
             RenderSettings.fogColor = nightColorF;
 
             //----テスト用
-            gameManager.SubSunValue(10);
+            gameManager.SubSunValue(subValue);
             //----
         }
     }
