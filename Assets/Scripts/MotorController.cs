@@ -69,8 +69,12 @@ public class MotorController : MonoBehaviour
         {
             float motor = maxMotorTorque * testInputActions.Player.Accelerate.ReadValue<float>();
             //float steering = maxSteeringAngle * testInputActions.Player.Rotate.ReadValue<float>();
-            Vector2 steering_vec = testInputActions.Player.Look.ReadValue<Vector2>();
-            float steering = steering_vec.x * maxSteeringAngle;
+            float steering = testInputActions.Player.Look.ReadValue<Quaternion>().eulerAngles.y;
+            if (steering > 180f)
+            {
+                steering -= 360f;
+            }
+            steering = Mathf.Clamp(steering, -maxSteeringAngle, maxSteeringAngle);
             float brake = brakePower * testInputActions.Player.Brake.ReadValue<float>();
 
             foreach (AxleInfo axleInfo in axleInfos)
@@ -85,7 +89,6 @@ public class MotorController : MonoBehaviour
                     axleInfo.Wheel.motorTorque = motor;
                 }
                 axleInfo.Wheel.brakeTorque = brake;
-                ApplyLocalPositionToVisuals(axleInfo.Wheel);
             }
 
             if (motorRb.velocity.magnitude > limitSpeed)
@@ -97,20 +100,6 @@ public class MotorController : MonoBehaviour
         {
             motorRb.velocity = Vector3.zero;
         }
-    }
-
-    public void ApplyLocalPositionToVisuals(WheelCollider collider)
-    {
-        if (collider.transform.childCount == 0)
-        {
-            return;
-        }
-        Transform visualWheel = collider.transform.GetChild(0);
-        Vector3 position;
-        Quaternion rotation;
-        collider.GetWorldPose(out position, out rotation);
-        visualWheel.transform.position = position;
-        visualWheel.transform.rotation = rotation;
     }
 
     public void SwitchRiding()
