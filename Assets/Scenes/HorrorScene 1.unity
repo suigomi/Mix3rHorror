@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.20150855, g: 0.22699389, b: 0.2670901, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.2015082, g: 0.22699356, b: 0.2670896, a: 0.2}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4446,11 +4446,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -9215042916403461548, guid: 2d5d6755a0995894c81e9e8385fe1758,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d5d6755a0995894c81e9e8385fe1758,
         type: 3}
       propertyPath: m_RootOrder
@@ -4506,78 +4501,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.007
       objectReference: {fileID: 0}
-    - target: {fileID: -6736761608639003755, guid: 2d5d6755a0995894c81e9e8385fe1758,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -828198804535189790, guid: 2d5d6755a0995894c81e9e8385fe1758,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2d5d6755a0995894c81e9e8385fe1758,
         type: 3}
       propertyPath: m_Name
       value: motorcycle
       objectReference: {fileID: 0}
-    - target: {fileID: 3461524970777590456, guid: 2d5d6755a0995894c81e9e8385fe1758,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616032231417832517, guid: 2d5d6755a0995894c81e9e8385fe1758,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002523238968628023, guid: 2d5d6755a0995894c81e9e8385fe1758,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8894382789963149986, guid: 2d5d6755a0995894c81e9e8385fe1758,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d5d6755a0995894c81e9e8385fe1758, type: 3}
---- !u!1 &1506871664 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2d5d6755a0995894c81e9e8385fe1758,
-    type: 3}
-  m_PrefabInstance: {fileID: 1506871663}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1506871665
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506871664}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.63655823, y: 1.5603938, z: 2.436828}
-  m_Center: {x: 0.0000033941037, y: 0.85716575, z: 0.30526102}
---- !u!54 &1506871666
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506871664}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1511623182
 GameObject:
   m_ObjectHideFlags: 0
@@ -6484,11 +6414,6 @@ PrefabInstance:
       propertyPath: xrOrigin
       value: 
       objectReference: {fileID: 552138357}
-    - target: {fileID: 6398261780645605597, guid: 2ae2c5a0e57c6c64aa984a392e89062b,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 633601891}
     - target: {fileID: 6398261780645605597, guid: 2ae2c5a0e57c6c64aa984a392e89062b,
         type: 3}
       propertyPath: hands.Array.data[0]
