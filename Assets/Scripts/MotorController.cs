@@ -18,6 +18,7 @@ public class MotorController : MonoBehaviour
     public GameObject cameraPos;
     public GameObject getOffPos;
     public GameObject[] hands;
+    public GameObject[] visualHands;
     public bool riding = false;
 
     public Transform handle;
@@ -36,6 +37,10 @@ public class MotorController : MonoBehaviour
     {
         motorRb = GetComponent<Rigidbody>();
         motorRb.centerOfMass = new Vector3(0, -0.5f, 0.3f);
+        foreach (GameObject hand in visualHands)
+        {
+            hand.SetActive(false);
+        }
     }
 
     void Awake()
@@ -115,6 +120,10 @@ public class MotorController : MonoBehaviour
             {
                 hand.SetActive(false);
             }
+            foreach (GameObject hand in visualHands)
+            {
+                hand.SetActive(true);
+            }
         }
         if (!riding)
         {
@@ -126,6 +135,10 @@ public class MotorController : MonoBehaviour
             foreach (GameObject hand in hands)
             {
                 hand.SetActive(true);
+            }
+            foreach (GameObject hand in visualHands)
+            {
+                hand.SetActive(false);
             }
         }
     }
