@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Threading.Tasks;
+using UnityEngine.Events;
  
 public class LoadText : MonoBehaviour {
  
