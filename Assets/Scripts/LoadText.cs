@@ -25,7 +25,7 @@ public class LoadText : MonoBehaviour {
     
     public InputActionReference toggleReference = null;
  
-    void drawText(int sceneNumber)
+    public void drawText(int sceneNumber)
     {
         switch(sceneNumber)
         {

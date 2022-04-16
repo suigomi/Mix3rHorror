@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("Day or Night")]
     public bool day = true;
 
+    public LoadText loadtext;
 
     [Tooltip("侵食度")]
     public int sanValue;
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int sanValueMax = 100;
     [Tooltip("侵食度の最小値(ゲームオーバーになる値)")]
     public int sanValueMin = 0;
+
+    public int textNum;
 
     public GameObject GameOverImage;
     float gameOverImageAlpha;
@@ -50,5 +53,10 @@ public class GameManager : MonoBehaviour
             gameOverImageAlpha += 0.003f;
             yield return null;
         }
+    }
+
+    public void LoadTextTest()
+    {
+        loadtext.drawText(textNum);
     }
 }
