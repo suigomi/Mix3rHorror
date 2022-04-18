@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mochineko.SimpleReorderableList.Samples.Editor
 {
-	[CustomEditor(typeof(Appearance))]
+	[CustomEditor(typeof(AppearanceManager))]
 	[CanEditMultipleObjects]
 	public class ReorderableListEditor : UnityEditor.Editor
 	{
