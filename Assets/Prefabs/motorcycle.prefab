@@ -194,10 +194,10 @@ MonoBehaviour:
   - Wheel: {fileID: 6124777813092498838}
     motor: 1
     steering: 0
-  maxMotorTorque: 200
+  maxMotorTorque: 400
   maxSteeringAngle: 30
   brakePower: 300
-  limitSpeed: 10
+  limitSpeed: 20
 --- !u!114 &5090269719988158235
 MonoBehaviour:
   m_ObjectHideFlags: 0

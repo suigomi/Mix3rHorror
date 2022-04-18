@@ -33,8 +33,13 @@ public class MotorController : MonoBehaviour
     public float limitSpeed;
 
     TestInputActions testInputActions;
+
+    private AudioSource engineSound;
+
     void Start()
     {
+        engineSound = GetComponent<AudioSource>();
+
         motorRb = GetComponent<Rigidbody>();
         motorRb.centerOfMass = new Vector3(0, -0.5f, 0.3f);
         foreach (GameObject hand in visualHands)
@@ -110,12 +115,13 @@ public class MotorController : MonoBehaviour
     public void SwitchRiding()
     {
         riding = !riding;
-        if (riding)
+        if (riding) // 乗るときの処理
         {
             xrOrigin.GetComponent<CharacterController>().enabled = false;
             xrOrigin.transform.position = cameraPos.transform.position;
             xrOrigin.transform.rotation = cameraPos.transform.rotation;
             xrOrigin.transform.parent = cameraPos.transform;
+            engineSound.Play();
             foreach (GameObject hand in hands)
             {
                 hand.SetActive(false);
@@ -125,13 +131,14 @@ public class MotorController : MonoBehaviour
                 hand.SetActive(true);
             }
         }
-        if (!riding)
+        if (!riding) // 降りるときの処理
         {
             xrOrigin.transform.parent = null;
             xrOrigin.GetComponent<CharacterController>().height = 1.1176f;
             xrOrigin.transform.position = getOffPos.transform.position;
             xrOrigin.transform.rotation = getOffPos.transform.rotation;
             xrOrigin.GetComponent<CharacterController>().enabled = true;
+            engineSound.Stop();
             foreach (GameObject hand in hands)
             {
                 hand.SetActive(true);
