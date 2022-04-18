@@ -8,13 +8,13 @@ using UnityEditor;
 [Serializable]
 public struct AppearanceTuple
 {
-    [Tooltip("表示する侵食度"), Range(0, 100)]
+    [Tooltip("表示するsan値"), Range(0, 100)]
     public int appearanceValue;
     [Tooltip("表示するオブジェクトたち")]
     [SerializeField] public List<GameObject> objects;
 }
 
-public class Appearance : MonoBehaviour
+public class AppearanceManager : MonoBehaviour
 {
     private GameManager gameManager;
 
@@ -38,15 +38,17 @@ public class Appearance : MonoBehaviour
         foreach(AppearanceTuple at in appearanceTuple)
         {
             foreach(GameObject gameObj in at.objects)
-            // ※インベントリに入っていない状態の時は除くを付け足す
-            if (at.appearanceValue >= gameManager.sanValue || !gameManager.day)
             {
-                gameObj.SetActive(true);
-            }
-            else
-            {
-                gameObj.SetActive(false);
-            }
+                // ※インベントリに入っていない状態の時は除くを付け足す
+                if (at.appearanceValue >= gameManager.sanValue || !gameManager.day)
+                {
+                    gameObj.SetActive(true);
+                }
+                else
+                {
+                    gameObj.SetActive(false);
+                }
+            } 
         }
     }
 
