@@ -12,6 +12,7 @@ public class FadeInFogSky : MonoBehaviour
     public float fadeSpeed = 0.0025f;
     public float fogSpeed = 2.5f;
     private bool flag, sceneFlag;
+    private AudioSource sandStormBGM;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,25 +24,27 @@ public class FadeInFogSky : MonoBehaviour
 
         flag = false;
         sceneFlag = false;
+        sandStormBGM = GetComponent<AudioSource>();
     }
 
     void OnTriggerExit(Collider other)
     {
-        flag = true;
+        // flag = true;
+        StartCoroutine("sandstorm");
         // FogSky.GetComponent<Renderer>().material.color = new Color(fogRed, fogGreen, fogBlue, 1.0f);
         // fogAlpha = 255;
     }
 
     // Update is called once per frame
-    void Update()
+    IEnumerator sandstorm()
     {
-        if(flag && fogAlpha < 1.0f)
+        if(fogAlpha < 1.0f)
         {
             fogAlpha += fadeSpeed;
             RenderSettings.fogEndDistance -= fogSpeed;
             FogSky.GetComponent<Renderer>().material.color = new Color(fogRed, fogGreen, fogBlue, fogAlpha);
         }
-        else if(flag && fogAlpha >= 1)
+        else if(fogAlpha >= 1)
         {
             sceneFlag = true;
         }
@@ -54,5 +57,6 @@ public class FadeInFogSky : MonoBehaviour
                 SceneManager.LoadScene("2.scene");
             }
         }
+        yield return new WaitForSeconds(0.1f);
     }
 }
