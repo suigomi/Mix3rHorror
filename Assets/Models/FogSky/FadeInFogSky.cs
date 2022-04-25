@@ -51,7 +51,7 @@ public class FadeInFogSky : MonoBehaviour
             fadePanel.color = new Color(0, 0, 0, fadeAlpha);
             if(fadeAlpha >= 1.0f)
             {
-                SceneManager.LoadScene("HorrorScene 1");
+                SceneManager.LoadScene("2.scene");
             }
         }
     }

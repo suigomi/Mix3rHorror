@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/1.scene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/2.scene.unity
+    guid: 2e9dc772b8232d940964609da98ec9d9
+  - enabled: 1
     path: Assets/Scenes/HorrorScene 1.unity
     guid: 95e3df1ce9f18f3479f545c7e7a06004
   m_configObjects:
