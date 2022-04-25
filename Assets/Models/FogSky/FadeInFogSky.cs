@@ -24,7 +24,7 @@ public class FadeInFogSky : MonoBehaviour
 
         flag = false;
         sceneFlag = false;
-        sandStormBGM = GetComponent<AudioSource>();
+        sandStormBGM = GameObject.Find("Main Camera").GetComponent<AudioSource>();
     }
 
     void OnTriggerExit(Collider other)
@@ -38,25 +38,32 @@ public class FadeInFogSky : MonoBehaviour
     // Update is called once per frame
     IEnumerator sandstorm()
     {
-        if(fogAlpha < 1.0f)
+        while(!flag)
         {
-            fogAlpha += fadeSpeed;
-            RenderSettings.fogEndDistance -= fogSpeed;
-            FogSky.GetComponent<Renderer>().material.color = new Color(fogRed, fogGreen, fogBlue, fogAlpha);
-        }
-        else if(fogAlpha >= 1)
-        {
-            sceneFlag = true;
-        }
-        if(sceneFlag)
-        {
-            fadeAlpha += fadeSpeed*2;
-            fadePanel.color = new Color(0, 0, 0, fadeAlpha);
-            if(fadeAlpha >= 1.0f)
+            sandStormBGM.Play();
+            if(fogAlpha < 1.0f)
             {
-                SceneManager.LoadScene("2.scene");
+                fogAlpha += fadeSpeed;
+                RenderSettings.fogEndDistance -= fogSpeed;
+                FogSky.GetComponent<Renderer>().material.color = new Color(fogRed, fogGreen, fogBlue, fogAlpha);
+                sandStormBGM.volume += fadeSpeed;
             }
+            else if(fogAlpha >= 1.0f)
+            {
+                sceneFlag = true;
+            }
+            if(sceneFlag)
+            {
+                fadeAlpha += fadeSpeed*2;
+                fadePanel.color = new Color(0, 0, 0, fadeAlpha);
+                if(fadeAlpha >= 1.0f)
+                {
+                    SceneManager.LoadScene("2.scene");
+                    flag = true;
+                }
+            }
+            yield return null;
         }
-        yield return new WaitForSeconds(0.1f);
+        yield break;
     }
 }
