@@ -20,7 +20,6 @@ public class MotorController : MonoBehaviour
     public GameObject[] hands;
     public GameObject[] visualHands;
     public bool riding = false; //乗っているか
-    public bool canGetOff = true; //降りられるかどうか
 
     public Transform handle;
     public List<AxleInfo> axleInfos; // 個々の車軸の情報
@@ -62,7 +61,7 @@ public class MotorController : MonoBehaviour
             SwitchRiding();
         }
 
-        if (testInputActions.Player.GetOff.ReadValue<float>() > 0.5 && riding && canGetOff)
+        if (testInputActions.Player.GetOff.ReadValue<float>() > 0.5 && riding)
         {
             SwitchRiding();
         }
@@ -111,16 +110,6 @@ public class MotorController : MonoBehaviour
         {
             motorRb.velocity = Vector3.zero;
         }
-    }
-
-    public void OnTriggerStay(Collider other)
-    {
-        canGetOff = false;
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        canGetOff = true;
     }
 
     public void SwitchRiding()
