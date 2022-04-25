@@ -36,19 +36,23 @@ public class AssembleBikeObj : MonoBehaviour
     public void onHoBar()
     {
         IXRSelectInteractable objName = socket.GetOldestInteractableSelected();
-        BikeParts bikePart = objName.transform.GetComponent<BikeParts>();
-
-
-        if (targetPart==bikePart.GetPartTag)
+        if (objName != null&& objName.transform.GetComponent<BikeParts>()!=null)
         {
-            this.BikePart = bikePart;
+            BikeParts bikePart = objName.transform.GetComponent<BikeParts>();
 
-            Destroy(objName.transform.GetComponent<XRGrabInteractable>());
-            Destroy(objName.transform.GetComponent<Rigidbody>());
-            Destroy(this.GetComponent<XRSocketInteractor>());
-            objName.transform.parent = this.transform.parent;
 
-            isSetted = true;
+            if (targetPart == bikePart.GetPartTag)
+            {
+                this.BikePart = bikePart;
+
+                Destroy(objName.transform.GetComponent<XRGrabInteractable>());
+                Destroy(objName.transform.GetComponent<Rigidbody>());
+                Destroy(this.GetComponent<XRSocketInteractor>());
+                objName.transform.parent = this.transform.parent;
+
+                isSetted = true;
+            }
         }
+        
     }
 }
