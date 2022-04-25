@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
  
-public class Scene1LoadText : MonoBehaviour {
+public class Scene2LoadText : MonoBehaviour {
  
 	//　読み込んだテキストを出力するUIテキスト
 	[SerializeField]
@@ -27,7 +27,8 @@ public class Scene1LoadText : MonoBehaviour {
     
     public InputActionReference toggleReference = null;
 
-    public GameObject player; 
+    public GameObject player;
+ 
     public void drawText(int sceneNumber)
     {
         switch(sceneNumber)
