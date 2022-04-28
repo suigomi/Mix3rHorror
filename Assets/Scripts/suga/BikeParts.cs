@@ -8,14 +8,11 @@ using UnityEngine;
 public class BikeParts : MonoBehaviour
 {
 
-    [SerializeField]
-    Mesh repairMesh;
 
     public enum Part
     {
         Tire,
-        Tank,
-        Wrench
+        Tank
     }
 
     [SerializeField]
@@ -27,9 +24,5 @@ public class BikeParts : MonoBehaviour
         get { return part; }
     }
 
-    public void Repair()
-    {
-        GetComponent<MeshFilter>().mesh = repairMesh;
-    }
 
 }

@@ -24,7 +24,7 @@ public class AssembleBikeObj : MonoBehaviour
     void Start()
     {
         socket = GetComponent<XRSocketInteractor>();
-        InvokeRepeating("onHoBar", 0.2f, 0.2f);
+        InvokeRepeating("onHoBar", 0.01f, 0.01f);
     }
 
     // Update is called once per frame
@@ -43,14 +43,19 @@ public class AssembleBikeObj : MonoBehaviour
 
             if (targetPart == bikePart.GetPartTag)
             {
-                this.BikePart = bikePart;
 
-                Destroy(objName.transform.GetComponent<XRGrabInteractable>());
-                Destroy(objName.transform.GetComponent<Rigidbody>());
-                Destroy(this.GetComponent<XRSocketInteractor>());
-                objName.transform.parent = this.transform.parent;
+                if((transform.position - objName.transform.position).sqrMagnitude == 0)
+                {
+                    this.BikePart = bikePart;
 
-                isSetted = true;
+                    Destroy(objName.transform.GetComponent<XRGrabInteractable>());
+                    Destroy(objName.transform.GetComponent<Rigidbody>());
+                    Destroy(this.GetComponent<XRSocketInteractor>());
+                    objName.transform.parent = this.transform.parent;
+
+                    isSetted = true;
+                }
+                
             }
         }
         

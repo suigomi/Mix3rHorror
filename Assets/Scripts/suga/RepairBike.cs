@@ -21,16 +21,16 @@ public class RepairBike : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.GetComponent<BikeParts>().GetPartTag == BikeParts.Part.Wrench)
-        {
-            if (assembleBikeObjs.All(value => value.IsSetted))
-            {
-                foreach (AssembleBikeObj obj in assembleBikeObjs)
-                {
-                    obj.BikePart.Repair();
-                }
-            }
-        }
+        //if (other.transform.GetComponent<BikeParts>().GetPartTag == BikeParts.Part.Wrench)
+        //{
+        //    if (assembleBikeObjs.All(value => value.IsSetted))
+        //    {
+        //        foreach (AssembleBikeObj obj in assembleBikeObjs)
+        //        {
+        //            obj.BikePart.Repair();
+        //        }
+        //    }
+        //}
     }
 
 }

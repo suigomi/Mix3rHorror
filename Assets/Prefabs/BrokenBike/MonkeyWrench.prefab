@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7497903813015342683}
   - component: {fileID: 8624450984370673001}
   - component: {fileID: 1265653357350340418}
-  - component: {fileID: 7050974709736043491}
+  - component: {fileID: 1375103953}
+  - component: {fileID: 4594790960458893184}
   m_Layer: 0
   m_Name: MonkeyWrench
   m_TagString: Untagged
@@ -165,7 +166,20 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!114 &7050974709736043491
+--- !u!65 &1375103953
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498188322046404328}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.022471547, y: 0.17, z: 0.459717}
+  m_Center: {x: 0.010740876, y: 0, z: 0.12985851}
+--- !u!114 &4594790960458893184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,11 +188,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3498188322046404328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40fc4bcf27ce6a24b88e5fb55f380006, type: 3}
+  m_Script: {fileID: 11500000, guid: 93e38cc6683f11f4995c671e2a2b1886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairMesh: {fileID: 0}
-  part: 2
 --- !u!1 &3938036413538723586
 GameObject:
   m_ObjectHideFlags: 0
