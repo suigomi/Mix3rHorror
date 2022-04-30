@@ -22,9 +22,11 @@ public class SocketedItemSize : MonoBehaviour
         objName = socket.GetOldestInteractableSelected();
         socketedObjectFirstSize = objName.transform.localScale;
        
-        // Debug.Log(objName.transform.name + " in socket of " + transform.name);
-        float meshSize = MaxElementOfVector3(gameObject.GetComponent<Renderer>().bounds.extents) / MaxElementOfVector3(objName.transform.gameObject.GetComponent<Renderer>().bounds.extents);
-        Debug.Log(meshSize);
+        // Debug.Log(MaxElementOfVector3(gameObject.GetComponent<Renderer>().bounds.extents));
+        // Debug.Log(MaxElementOfVector3(objName.transform.gameObject.GetComponent<Renderer>().bounds.extents));
+        // Debug.Log(MaxElementOfVector3(gameObject.GetComponent<Renderer>().bounds.extents) / MaxElementOfVector3(objName.transform.gameObject.GetComponent<Renderer>().bounds.extents));
+        float meshSize = MaxElementOfVector3(gameObject.GetComponent<Renderer>().bounds.extents) / MaxElementOfVector3(objName.transform.gameObject.GetComponentInChildren<Renderer>().bounds.extents);
+        // Debug.Log(meshSize);
         objName.transform.localScale *= meshSize;
     }
 

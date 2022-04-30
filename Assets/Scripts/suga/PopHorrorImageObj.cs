@@ -14,11 +14,14 @@ public class PopHorrorImageObj : MonoBehaviour
 
     bool isPoped = false;
     Transform player;
-    int distance = 10;
+    [SerializeField] int distance = 10;
+
+    AudioSource jumpScareAudio;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        jumpScareAudio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -27,6 +30,7 @@ public class PopHorrorImageObj : MonoBehaviour
         {
             if ((player.position - transform.position).sqrMagnitude < distance)
             {
+                jumpScareAudio.PlayOneShot(jumpScareAudio.clip);
                 Sprite sprite = horrorImages.images[Random.Range(0, horrorImages.images.Length - 1)];
                 Image.sprite = sprite;
                 Image.enabled = true;
@@ -34,7 +38,6 @@ public class PopHorrorImageObj : MonoBehaviour
                 isPoped = true;
                 Invoke("Refresh", 5);
             }
-            
         }
     }
 
