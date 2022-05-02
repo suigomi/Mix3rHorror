@@ -156,6 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e776179c282574c4e865ea338252b61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  daySubValuePerMinute: 0
+  nightSubValuePerMinute: 0
   skyBox: {fileID: 2100000, guid: 166e67d34827c994498f41e22c5c89b0, type: 2}
   lightObj: {fileID: 705507993}
 --- !u!114 &152399592
@@ -1241,7 +1243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   appearanceTuple:
-  - appearanceValue: 80
+  - appearanceValue: 50
     objects:
     - {fileID: 556104230}
 --- !u!1 &530525454
@@ -4773,6 +4775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e776179c282574c4e865ea338252b61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  daySubValuePerMinute: 1
+  nightSubValuePerMinute: 5
   skyBox: {fileID: 2100000, guid: 166e67d34827c994498f41e22c5c89b0, type: 2}
   lightObj: {fileID: 705507993}
 --- !u!4 &1712502637

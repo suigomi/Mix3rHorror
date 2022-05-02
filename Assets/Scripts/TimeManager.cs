@@ -6,6 +6,11 @@ public class TimeManager : MonoBehaviour
 {
     private GameManager gameManager;
 
+    [SerializeField, Range(0,10), Tooltip("昼1分あたりのSan値減少量")] 
+    int daySubValuePerMinute;
+    [SerializeField, Range(0,10), Tooltip("夜1分あたりのSan値減少量")] 
+    int nightSubValuePerMinute;
+    private float timeCounter; //秒経過のカウンター
 
     [Tooltip("変更するskybox(Exposureを変える)")]
     public Material skyBox;
@@ -93,21 +98,42 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeCounter += Time.deltaTime;
+        if (timeCounter >= 60f)
+        {
+            if (gameManager.day)
+            {
+                gameManager.SubSanValue(daySubValuePerMinute);
+                TimeChange(false);
+            } else
+            {
+                gameManager.SubSanValue(nightSubValuePerMinute);
+                TimeChange(false);
+            }
+
+            timeCounter = 0f;
+        }
+
+
+
         //テスト用----------
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             gameManager.SubSanValue(5);
-            TimeReversal();
+            TimeChange(true);
         }
         //--------------------
 
     }
 
-    public void TimeReversal()
+    public void TimeChange(bool isswitch)
     {
-        if (gameManager.sanValue > gameManager.sanValueMin)
+        if (isswitch)
         {
-            gameManager.day = !gameManager.day; //昼と夜の切り替え
+            if (gameManager.sanValue > gameManager.sanValueMin)
+            {
+                gameManager.day = !gameManager.day; //昼と夜の切り替え
+            }
         }
 
         if (gameManager.day)

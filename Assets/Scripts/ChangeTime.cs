@@ -20,7 +20,7 @@ public class ChangeTime : MonoBehaviour
         if (other.gameObject.name == "XR Origin")
         {
             gameManager.SubSanValue(substructValue);
-            timeManager.TimeReversal();
+            timeManager.TimeChange(true);
         }
     }
 
