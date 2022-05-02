@@ -7,9 +7,10 @@ public class TimeManager : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField, Range(0,10), Tooltip("昼1分あたりのSan値減少量")] 
-    int daySubValuePerMinute;
+    public int daySubValuePerMinute;
     [SerializeField, Range(0,10), Tooltip("夜1分あたりのSan値減少量")] 
-    int nightSubValuePerMinute;
+    public int nightSubValuePerMinute;
+
     private float timeCounter; //秒経過のカウンター
 
     [Tooltip("変更するskybox(Exposureを変える)")]

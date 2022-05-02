@@ -11,6 +11,8 @@ public class PlayerRun : MonoBehaviour
     private ContinuousMoveProviderBase XrOrign;
     private bool isrun;
 
+    [SerializeField] int speed = 3;
+
     void Start()
     {
         XrOrign = GameObject.Find("XR Origin").GetComponent<ContinuousMoveProviderBase>();
@@ -23,36 +25,6 @@ public class PlayerRun : MonoBehaviour
     private void run(InputAction.CallbackContext context)
     {
         isrun = !isrun;
-        XrOrign.moveSpeed = (isrun) ? XrOrign.moveSpeed + 10 : XrOrign.moveSpeed - 10;
+        XrOrign.moveSpeed = (isrun) ? XrOrign.moveSpeed + speed : XrOrign.moveSpeed - speed;
     }
-
-    /*
-    private ContinuousMoveProviderBase XrOrign;
-
-    private TestPlayerActions testPlayerActions;
-    // Start is called before the first frame update
-    void Start()
-    {
-        XrOrign = GameObject.Find("XR Origin").GetComponent<ContinuousMoveProviderBase>();
-    }
-
-    void Awake()
-    {
-        testPlayerActions = new TestPlayerActions();
-        testPlayerActions.Enable();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (testPlayerActions.Player.Run.WasPressedThisFrame())
-        {
-            XrOrign.moveSpeed += 10;
-        }
-        if (testPlayerActions.Player.Run.WasReleasedThisFrame())
-        {
-            XrOrign.moveSpeed -= 10;
-        }
-    }
-    */
 }

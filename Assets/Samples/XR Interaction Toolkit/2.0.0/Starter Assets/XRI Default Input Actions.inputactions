@@ -583,7 +583,7 @@
                 {
                     "name": "",
                     "id": "0ad9cfec-ce30-4910-ac6f-dd9496fd9312",
-                    "path": "<XRController>{LeftHand}/primary2DAxisClick",
+                    "path": "<XRController>{LeftHand}/thumbstickClicked",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",

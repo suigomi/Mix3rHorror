@@ -27,7 +27,9 @@ public class Scene1LoadText : MonoBehaviour {
     
     public InputActionReference toggleReference = null;
 
-    public GameObject player; 
+    public GameObject player;
+
+    private GameObject timeManager;
     public void drawText(int sceneNumber)
     {
         switch(sceneNumber)
@@ -56,17 +58,21 @@ public class Scene1LoadText : MonoBehaviour {
 		splitText1 = loadText1.Split(new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
         textFlag = true;
         player.GetComponent<ContinuousMoveProviderBase>().enabled = false;
+        timeManager = GameObject.Find("Time Manager");
 	}
 
     void OnTriggerEnter(Collider other)
     {
-        toggleReference.action.started += Toggle;
+        toggleReference.action.started += Text1;
     }
 
-    private async void Toggle(InputAction.CallbackContext context)
+    private async void Text1(InputAction.CallbackContext context)
     {
         if(splitText1[textNum1].Contains("/end/"))
         {
+            timeManager.GetComponent<TimeManager>().daySubValuePerMinute = 1;
+            timeManager.GetComponent<TimeManager>().nightSubValuePerMinute = 5;
+            Debug.Log("asdasd");
             dataText.text = "";
             textFlag = false;
             player.GetComponent<ContinuousMoveProviderBase>().enabled = true;
