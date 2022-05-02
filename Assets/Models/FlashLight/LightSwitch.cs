@@ -32,6 +32,6 @@ public class LightSwitch : MonoBehaviour
         Light.SetActive(isActive);
         audioSource.PlayOneShot(audioClips[Light.activeSelf ? 0 : 1]);
 
-        gameManager.GameOver();
+        // gameManager.GameOver();
     }
 }
