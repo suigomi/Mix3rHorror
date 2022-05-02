@@ -7,6 +7,26 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class PlayerRun : MonoBehaviour
 {
+    public InputActionReference toggleReference = null;
+    private ContinuousMoveProviderBase XrOrign;
+    private bool isrun;
+
+    void Start()
+    {
+        XrOrign = GameObject.Find("XR Origin").GetComponent<ContinuousMoveProviderBase>();
+        isrun = false;
+        toggleReference.action.started += run;
+    }
+
+    
+
+    private void run(InputAction.CallbackContext context)
+    {
+        isrun = !isrun;
+        XrOrign.moveSpeed = (isrun) ? XrOrign.moveSpeed + 10 : XrOrign.moveSpeed - 10;
+    }
+
+    /*
     private ContinuousMoveProviderBase XrOrign;
 
     private TestPlayerActions testPlayerActions;
@@ -34,4 +54,5 @@ public class PlayerRun : MonoBehaviour
             XrOrign.moveSpeed -= 10;
         }
     }
+    */
 }
