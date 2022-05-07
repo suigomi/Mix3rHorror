@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (sanValue <= 0)
+        {
+            GameOver();
+        }
     }
 
     public void SubSanValue(int x) //san値からxだけ引く(Substruct)

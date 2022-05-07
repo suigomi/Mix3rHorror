@@ -12,6 +12,7 @@ public class TimeManager : MonoBehaviour
     public int nightSubValuePerMinute;
 
     private float timeCounter; //秒経過のカウンター
+    private float nightCounter; //夜のカウンター
 
     [Tooltip("変更するskybox(Exposureを変える)")]
     public Material skyBox;
@@ -99,22 +100,7 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeCounter += Time.deltaTime;
-        if (timeCounter >= 60f)
-        {
-            if (gameManager.day)
-            {
-                gameManager.SubSanValue(daySubValuePerMinute);
-                TimeChange(false);
-            } else
-            {
-                gameManager.SubSanValue(nightSubValuePerMinute);
-                TimeChange(false);
-            }
-
-            timeCounter = 0f;
-        }
-
+        CountUp();
 
 
         //テスト用----------
@@ -160,4 +146,40 @@ public class TimeManager : MonoBehaviour
             RenderSettings.fogColor = nightColorF;
         }
     }
+
+    public void CountUp()
+    {
+        timeCounter += Time.deltaTime;
+        if (timeCounter >= 60f)
+        {
+            if (gameManager.day)
+            {
+                gameManager.SubSanValue(daySubValuePerMinute);
+                TimeChange(false);
+            }
+            else
+            {
+                gameManager.SubSanValue(nightSubValuePerMinute);
+                TimeChange(false);
+            }
+
+            timeCounter = 0f;
+        }
+
+        if (gameManager.day)
+        {
+            nightCounter = 0f;
+        }
+        else
+        {
+            nightCounter += Time.deltaTime;
+        }
+
+        if (nightCounter >= 5f)
+        {
+            gameManager.GameOver();
+        }
+    }
+
+
 }
