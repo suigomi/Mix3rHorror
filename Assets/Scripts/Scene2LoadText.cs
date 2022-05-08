@@ -23,6 +23,7 @@ public class Scene2LoadText : MonoBehaviour {
 	//　現在表示中テキスト2番号
 	private int textNum2;
 
+    bool iventFlag = true;
     bool textFlag = false;
     
     public InputActionReference toggleReference = null;
@@ -50,20 +51,19 @@ public class Scene2LoadText : MonoBehaviour {
 		textNum1 = 0;
 		dataText.text = "test";
     }
-
-	void Start ()
-    {
-		dataText.text = "Press A";
-        loadText1 = textAsset[0].text;
-		splitText1 = loadText1.Split(new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
-        textFlag = true;
-        player.GetComponent<ContinuousMoveProviderBase>().enabled = false;
-        timeManager = GameObject.Find("Time Manager");
-	}
-
     void OnTriggerEnter(Collider other)
     {
-        toggleReference.action.started += Text2;
+        if(other.gameObject == player && iventFlag)
+        {
+            dataText.text = "Press A";
+            loadText1 = textAsset[0].text;
+            splitText1 = loadText1.Split(new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
+            textFlag = true;
+            player.GetComponent<ContinuousMoveProviderBase>().enabled = false;
+            timeManager = GameObject.Find("Time Manager");
+            toggleReference.action.started += Text2;
+            iventFlag = !iventFlag;
+        }
     }
 
     private async void Text2(InputAction.CallbackContext context)

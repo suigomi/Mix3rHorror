@@ -181,5 +181,10 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    public void TextEndEvents()
+    {
+        daySubValuePerMinute = 1;
+        nightSubValuePerMinute = 5;
+    }
 
 }
