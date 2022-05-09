@@ -175,10 +175,12 @@ public class TimeManager : MonoBehaviour
             nightCounter += Time.deltaTime;
         }
 
-        if (nightCounter >= 5f)
+        /* 夜の時間でゲームオーバー
+        if (nightCounter >= 300f)
         {
             gameManager.GameOver();
         }
+        */
     }
 
     public void TextEndEvents()
