@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.20150855, g: 0.22699389, b: 0.2670901, a: 0.2}
+  m_IndirectSpecularColor: {r: 0.2015082, g: 0.22699356, b: 0.2670896, a: 0.2}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2831,7 +2831,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac64bca8d9e2b54289efb19275d4deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appearanceTuple: []
+  dayObjects: []
+  nightObjects: []
+  appearanceTuple:
+  - appearanceValue: 0
+    objects: []
 --- !u!4 &1132386632
 Transform:
   m_ObjectHideFlags: 0

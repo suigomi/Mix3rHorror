@@ -8,11 +8,14 @@ namespace Mochineko.SimpleReorderableList.Samples.Editor
 	[CanEditMultipleObjects]
 	public class ReorderableListEditor : UnityEditor.Editor
 	{
-		private ReorderableList reorderableList;
-
+		private ReorderableList reorderableList1;
+		private ReorderableList reorderableList2;
+		private ReorderableList reorderableList3;
 		private void OnEnable()
 		{
-			reorderableList = new ReorderableList(serializedObject.FindProperty("appearanceTuple"));
+			reorderableList1 = new ReorderableList(serializedObject.FindProperty("dayObjects"));
+			reorderableList2 = new ReorderableList(serializedObject.FindProperty("nightObjects"));
+			reorderableList3 = new ReorderableList(serializedObject.FindProperty("appearanceTuple"));
 		}
 
 		public override void OnInspectorGUI()
@@ -22,9 +25,19 @@ namespace Mochineko.SimpleReorderableList.Samples.Editor
 			EditorGUI.BeginChangeCheck();
 			{
 				EditorFieldUtility.ReadOnlyComponentField(target as MonoBehaviour, this);
+				if (reorderableList1 != null)
+                {
+					reorderableList1.Layout();
+                }
+				if (reorderableList2 != null)
+				{
+					reorderableList2.Layout();
+				}
+				if (reorderableList3 != null)
+                {
+					reorderableList3.Layout();
+				}
 
-				if (reorderableList != null)
-					reorderableList.Layout();
 			}
 			if (EditorGUI.EndChangeCheck())
 			{

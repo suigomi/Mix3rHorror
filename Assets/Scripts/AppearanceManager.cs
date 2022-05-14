@@ -18,26 +18,53 @@ public class AppearanceManager : MonoBehaviour
 {
     private GameManager gameManager;
 
+    [SerializeField, Tooltip("昼だけ出現するオブジェクト")]
+    List<GameObject> dayObjects;
 
+    [SerializeField, Tooltip("夜だけ出現するオブジェクト")]
+    List<GameObject> nightObjects;
 
-    [SerializeField] List<AppearanceTuple> appearanceTuple;
-    // Start is called before the first frame update
+    [SerializeField, Tooltip("San値によって出現するオブジェクト")]
+    List<AppearanceTuple> appearanceTuple;
+
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        ChangeAppearance();
-    }
-
-    public void ChangeAppearance()
-    {
-        foreach(AppearanceTuple at in appearanceTuple)
+        //夜と昼で表示するオブジェクトを変える--------------
+        if (gameManager.day)
         {
-            foreach(GameObject gameObj in at.objects)
+            foreach(GameObject gameObj in dayObjects)
+            {
+                gameObj.SetActive(true);
+            }
+            foreach(GameObject gameObj in nightObjects)
+            {
+                gameObj.SetActive(false);
+            }
+        } 
+        else
+        {
+            foreach (GameObject gameObj in dayObjects)
+            {
+                gameObj.SetActive(false);
+            }
+            foreach (GameObject gameObj in nightObjects)
+            {
+                gameObj.SetActive(true);
+            }
+        }
+        //---------------------------------------------------
+
+
+        //San値で表示するオブジェクトを変える----------------
+        foreach (AppearanceTuple at in appearanceTuple)
+        {
+            foreach (GameObject gameObj in at.objects)
             {
                 // ※インベントリに入っていない状態の時は除くを付け足す
                 if (at.appearanceValue >= gameManager.sanValue || !gameManager.day)
@@ -48,8 +75,8 @@ public class AppearanceManager : MonoBehaviour
                 {
                     gameObj.SetActive(false);
                 }
-            } 
+            }
         }
+        //----------------------------------------------------
     }
-
 }
