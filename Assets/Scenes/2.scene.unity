@@ -735,6 +735,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaharaDesert
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011412874954, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014263799362, guid: 5668e2d97d6b6eb49b5303b7b9b1d2b0, type: 3}
       propertyPath: m_RootOrder
       value: 9
