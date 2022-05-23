@@ -6,6 +6,7 @@ public class ChangeTime : MonoBehaviour
 {
     private GameManager gameManager;
     private TimeManager timeManager;
+    private SpawnWarpGate spawnWarpGate;
 
     [Tooltip("どのくらいSan値を下げるか")]
     public int substructValue;
@@ -14,6 +15,7 @@ public class ChangeTime : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         timeManager = GameObject.Find("Time Manager").GetComponent<TimeManager>();
+        spawnWarpGate = GetComponent<SpawnWarpGate>();
     }
     void OnTriggerEnter(Collider other)
     {
@@ -21,6 +23,7 @@ public class ChangeTime : MonoBehaviour
         {
             gameManager.SubSanValue(substructValue);
             timeManager.TimeChange(true);
+            spawnWarpGate.MoveGate();
         }
     }
 
