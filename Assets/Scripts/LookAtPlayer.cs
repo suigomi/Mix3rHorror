@@ -24,7 +24,7 @@ public class LookAtPlayer : MonoBehaviour
         Vector3 relativePos = player.transform.position - this.transform.position;
 
         // 方向を、回転情報に変換
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        Quaternion rotation = Quaternion.LookRotation(new Vector3(relativePos.x, 0, relativePos.z));
 
         // 回転させる
         transform.rotation = Quaternion.Slerp(this.transform.rotation, rotation, speed);
