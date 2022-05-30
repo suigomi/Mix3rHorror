@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject GameOverImage;
     float gameOverImageAlpha;
+    public GameObject GameClearImage;
+    float gameClearImageAlpha;
     float red, green, blue;
 
     // Start is called before the first frame update
@@ -52,6 +54,22 @@ public class GameManager : MonoBehaviour
         {
             GameOverImage.GetComponent<Image>().color = new Color(1, 1, 1, gameOverImageAlpha);
             gameOverImageAlpha += 0.003f;
+            yield return null;
+        }
+    }
+
+    public void GameClear()
+    {
+        StartCoroutine("GameClearCoroutine");
+    }
+
+    IEnumerator GameClearCoroutine()
+    {
+       GameClearImage.SetActive(true);
+        while(gameClearImageAlpha<1)
+        {
+            GameClearImage.GetComponent<Image>().color = new Color(1, 1, 1, gameClearImageAlpha);
+            gameClearImageAlpha += 0.003f;
             yield return null;
         }
     }
