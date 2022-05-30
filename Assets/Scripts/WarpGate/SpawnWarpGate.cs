@@ -36,26 +36,33 @@ public class SpawnWarpGate : MonoBehaviour
     {
         float spawnX = center.x + radius * Random.insideUnitCircle.x;
         float spawnZ = center.z + radius * Random.insideUnitCircle.y;
-
-        Ray ray = new Ray(new Vector3(spawnX, rayOriginY, spawnZ), Vector3.down);　//Rayを作る
-        RaycastHit hit;　//Rayが当たったオブジェクト
-        if (Physics.Raycast(ray, out hit))
+        if(540f <= spawnX && spawnX <= 595f && 615f <= spawnZ && spawnZ <= 655f)
         {
-            if (hit.collider.CompareTag("Terrain"))
+            MoveGate();
+            
+        }
+        else
+        {
+            Ray ray = new Ray(new Vector3(spawnX, rayOriginY, spawnZ), Vector3.down); //Rayを作る
+            RaycastHit hit; //Rayが当たったオブジェクト
+            if (Physics.Raycast(ray, out hit))
             {
-                float spawnY = hit.point.y + GetComponent<BoxCollider>().size.y / 2;
-                transform.position = new Vector3(spawnX, spawnY, spawnZ);
-                transform.eulerAngles = new Vector3(transform.rotation.x, Random.Range(0, 360), transform.rotation.z);
+                if (hit.collider.CompareTag("Terrain"))
+                {
+                    float spawnY = hit.point.y + GetComponent<BoxCollider>().size.y / 2;
+                    transform.position = new Vector3(spawnX, spawnY, spawnZ);
+                    transform.eulerAngles = new Vector3(transform.rotation.x, Random.Range(0, 360), transform.rotation.z);
+                }
+                else //地面以外に当たったら再帰
+                {
+                    MoveGate();
+                }
             }
-            else //地面以外に当たったら再帰
+            else //当たらなかったら再帰
             {
                 MoveGate();
             }
-        }
-        else //当たらなかったら再帰
-        {
-            MoveGate();
-        }
 
+        }
     }
 }
