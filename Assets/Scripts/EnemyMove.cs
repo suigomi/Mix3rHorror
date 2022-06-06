@@ -10,11 +10,16 @@ public class EnemyMove : MonoBehaviour
     
     private NavMeshAgent navMeshAgent;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         // NavMeshAgentを保持しておく
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +29,14 @@ public class EnemyMove : MonoBehaviour
         {
             // プレイヤーを目指して進む
             navMeshAgent.destination = player.transform.position;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "XR Origin")
+        {
+            gameManager.GameOver();
         }
     }
 }
