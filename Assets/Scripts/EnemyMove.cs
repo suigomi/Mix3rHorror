@@ -30,13 +30,13 @@ public class EnemyMove : MonoBehaviour
             // プレイヤーを目指して進む
             navMeshAgent.destination = player.transform.position;
         }
-    }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "XR Origin")
+        float distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
+        if (distance <= 2.5f)
         {
             gameManager.GameOver();
         }
     }
+
+    
 }
