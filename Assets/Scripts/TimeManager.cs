@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+
 
 public class TimeManager : MonoBehaviour
 {
@@ -175,12 +178,13 @@ public class TimeManager : MonoBehaviour
             nightCounter += Time.deltaTime;
         }
 
-        /* 夜の時間でゲームオーバー
+        /*夜の時間でゲームオーバー
         if (nightCounter >= 300f)
         {
             gameManager.GameOver();
         }
         */
+        
     }
 
     public void TextEndEvents()
