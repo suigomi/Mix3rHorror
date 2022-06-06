@@ -40,22 +40,34 @@ public class AppearanceManager : MonoBehaviour
         {
             foreach(GameObject gameObj in dayObjects)
             {
-                gameObj.SetActive(true);
+                if (gameObj != null)
+                {
+                    gameObj.SetActive(true);
+                }
             }
             foreach(GameObject gameObj in nightObjects)
             {
-                gameObj.SetActive(false);
+                if (gameObj != null)
+                {
+                    gameObj.SetActive(false);
+                }
             }
         } 
         else
         {
             foreach (GameObject gameObj in dayObjects)
             {
-                gameObj.SetActive(false);
+                if (gameObj != null)
+                {
+                    gameObj.SetActive(false);
+                }
             }
             foreach (GameObject gameObj in nightObjects)
             {
-                gameObj.SetActive(true);
+                if (gameObj != null)
+                {
+                    gameObj.SetActive(true);
+                }
             }
         }
         //---------------------------------------------------
@@ -69,11 +81,17 @@ public class AppearanceManager : MonoBehaviour
                 // ※インベントリに入っていない状態の時は除くを付け足す
                 if (at.appearanceValue >= gameManager.sanValue || !gameManager.day)
                 {
-                    gameObj.SetActive(true);
+                    if (gameObj != null)
+                    {
+                        gameObj.SetActive(true);
+                    }
                 }
                 else
                 {
-                    gameObj.SetActive(false);
+                    if (gameObj != null)
+                    {
+                        gameObj.SetActive(false);
+                    }
                 }
             }
         }
